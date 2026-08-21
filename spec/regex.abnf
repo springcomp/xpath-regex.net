@@ -1,0 +1,82 @@
+; XPath and XQuery Functions and Operators 3.1 Regular Expressions
+; Extends XML Schema Part 2: Datatypes Second Edition (2004)
+; https://www.w3.org/TR/xpath-functions/#regex-syntax
+; W3C Recommendation 21 March 2017
+
+; Core rules DIGIT and ALPHA from RFC 5234 Appendix B are referenced.
+
+; -- Structure --
+
+regExp = branch *( "|" branch )
+branch = *piece
+piece= atom [ quantifier ]
+
+; -- Quantifiers --
+
+quantifier = ( "?" / "*" / "+" / ( "{" quantity "}" ) ) [ "?" ]
+
+quantity = quantRange / quantMin / QuantExact
+quantRange = QuantExact "," QuantExact
+quantMin = QuantExact ","
+QuantExact = 1*DIGIT
+
+; -- Atoms --
+
+atom = Char / charClass / ( "(" [ "?:" ] regExp ")" ) / backReference
+
+backReference= "\" %x31-39 *DIGIT
+
+Char = %x00-23 / %x25-27 / %x2C-2D / %x2F-3E /
+	%x40-5A / %x5F-7A /
+	%x7E-D7FF / %xE000-10FFFF
+
+; -- Character Classes --
+
+charClass= charClassEsc / charClassExpr / WildcardEsc
+charClassExpr= "[" charGroup "]"
+charGroup= posCharGroup / negCharGroup / charClassSub
+posCharGroup = 1*( charRange / charClassEsc )
+negCharGroup = "^" posCharGroup
+charClassSub = ( posCharGroup / negCharGroup ) "-" charClassExpr
+charRange= seRange / XmlCharIncDash
+seRange= charOrEsc "-" charOrEsc
+
+charOrEsc= XmlChar / SingleCharEsc
+
+XmlChar= %x00-2C / %x2E-5A / %x5C /
+	%x5E-D7FF / %xE000-10FFFF
+
+XmlCharIncDash = %x00-5A / %x5C /
+	%x5E-D7FF / %xE000-10FFFF
+
+; -- Character Class Escapes --
+
+charClassEsc = SingleCharEsc / MultiCharEsc / catEsc / complEsc
+
+SingleCharEsc= "\" ( %s"n" / %s"r" / %s"t" / "\" / "|" /
+	"." / "?" / "*" / "+" / "(" / ")" / "{" / "}" / "$" /
+	"-" / %x5B / %x5D / "^" )
+
+MultiCharEsc = "\" ( "s" / "i" / "c" / "d" / "w" )
+
+WildcardEsc= "."
+
+; -- Unicode Properties --
+
+catEsc = %s"\p{" charProp "}"
+
+complEsc = %s"\P{" charProp "}"
+
+charProp = IsCategory / IsBlock
+
+IsCategory = Letters / Marks / Numbers / Punctuation / Separators / Symbols / Others
+
+Letters= %s"L" [ %s"u" / %s"l" / %s"t" / %s"m" / %s"o" ]
+Marks= %s"M" [ %s"n" / %s"c" / %s"e" ]
+Numbers= %s"N" [ %s"d" / %s"l" / %s"o" ]
+Punctuation= %s"P" [ %s"c" / %s"d" / %s"s" / %s"e" / %s"i" / %s"f" / %s"o" ]
+Separators = %s"Z" [ %s"s" / %s"l" / %s"p" ]
+Symbols= %s"S" [ %s"m" / %s"c" / %s"k" / %s"o" ]
+Others = %s"C" [ %s"c" / %s"f" / %s"o" / %s"n" ]
+
+IsBlock= %s"Is" 1*( ALPHA / DIGIT / "-" )

@@ -1,0 +1,15 @@
+<Project>
+	<PropertyGroup>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageVersion Include="coverlet.collector" Version="8.0.0" />
+		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+		<PackageVersion Include="xunit.v3" Version="3.2.2" />
+		<PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
+		<PackageVersion Include="Microsoft.Extensions.ObjectPool" Version="9.0.0" />
+		<PackageVersion Include="System.Collections.Immutable" Version="9.0.0" />
+		<PackageVersion Include="BenchmarkDotNet" Version="0.14.0" />
+		<PackageVersion Include="Unicode.NET" Version="1.0.0" />
+	</ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+<Solution>
+	<Folder Name="/src/">
+		<Project Path="src/XPath.Regex.NET/XPath.Regex.NET.csproj" />
+	</Folder>
+	<Folder Name="/tests/">
+		<Project Path="tests/XPath.Regex.NET.UnitTests/XPath.Regex.NET.UnitTests.csproj" />
+	</Folder>
+	<Folder Name="/benchmarks/">
+		<Project Path="benchmarks/XPath.Regex.NET.Benchmarks/XPath.Regex.NET.Benchmarks.csproj" />
+	</Folder>
+	<Folder Name="/compliance/">
+		<Project Path="compliance/validates/validates.csproj" />
+		<Project Path="compliance/matches/matches.csproj" />
+	</Folder>
+</Solution>

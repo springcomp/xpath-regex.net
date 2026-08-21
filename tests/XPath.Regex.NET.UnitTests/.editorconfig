@@ -1,0 +1,5 @@
+root = false
+
+# Test methods use Arrange_Act_Assert naming convention with underscores — suppress CA1707.
+[*.cs]
+dotnet_diagnostic.CA1707.severity = none

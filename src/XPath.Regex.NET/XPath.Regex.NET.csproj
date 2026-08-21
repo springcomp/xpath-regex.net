@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <!-- Package metadata -->
+    <PackageId>XPath.Regex.NET</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Springcomp</Authors>
+    <Description>XSD/XPath-compatible regex engine for .NET. Provides Unicode-aware pattern matching with support for character classes, case folding, and regex functions. Designed for embedding into XSLT processors, XML validators, and Unicode-aware text processing tools.</Description>
+    <PackageTags>xpath;xsd;regex;unicode;xml;xslt;validation;pattern-matching</PackageTags>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/springcomp/xpath-regex</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/springcomp/xpath-regex</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <!-- Documentation -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!-- NuGet symbol package -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <!-- Deterministic build -->
+    <Deterministic>true</Deterministic>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Unicode.NET" />
+  </ItemGroup>
+</Project>
